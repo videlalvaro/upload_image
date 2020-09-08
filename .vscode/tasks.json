@@ -6,12 +6,18 @@
       "command": "host start",
       "problemMatcher": "$func-watch",
       "isBackground": true,
-      "dependsOn": "npm install"
+      "dependsOn": "npm run webpack"
     },
     {
       "type": "shell",
       "label": "npm install",
       "command": "npm install"
+    },
+    {
+      "type": "shell",
+      "label": "npm run webpack",
+      "command": "npm run webpack",
+      "dependsOn": "npm install"
     },
     {
       "type": "shell",

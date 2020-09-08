@@ -16,7 +16,7 @@
     {
       "type": "shell",
       "label": "npm run webpack",
-      "command": "npm run webpack",
+      "command": "npm run build",
       "dependsOn": "npm install"
     },
     {

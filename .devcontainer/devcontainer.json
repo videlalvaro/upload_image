@@ -15,7 +15,8 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-azuretools.vscode-azurefunctions",
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"ritwickdey.liveserver"
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.

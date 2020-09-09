@@ -5,7 +5,7 @@
   "scripts": {
     "start": "func start",
     "test": "echo \"No tests yet...\"",
-    "build": "webpack"
+    "build": "webpack --mode=development"
   },
   "dependencies": {
     "@azure/storage-blob": "^12.2.0-preview.1"

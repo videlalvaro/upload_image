@@ -1,0 +1,7 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+      "AzureWebJobsStorage": "Enter Your Storage Key Here",
+      "FUNCTIONS_WORKER_RUNTIME": "node"
+    }
+  }

@@ -8,16 +8,15 @@ const { extractConnectionStringParts } = require('./utils.js');
 module.exports = async function (context, req) {
     const permissions = 'c';
     const container = 'images';
-    const connStringParts = extractConnectionStringParts(process.env.AzureWebJobsStorage)
     context.res = {
-        body: generateSasToken(connStringParts, container, permissions)
+        body: generateSasToken(process.env.AzureWebJobsStorage, container, permissions)
     };
     context.done();
 };
 
-function generateSasToken(connStringParts, container, permissions) {
-    const connString = connStringParts.accountKey.toString('base64');
-    const sharedKeyCredential = new StorageSharedKeyCredential(connStringParts.accountName, connString);
+function generateSasToken(connectionString, container, permissions) {
+    const { accountKey, accountName, url } = extractConnectionStringParts(connectionString);
+    const sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey.toString('base64'));
 
     var expiryDate = new Date();
     expiryDate.setHours(expiryDate.getHours() + 2);
@@ -26,10 +25,10 @@ function generateSasToken(connStringParts, container, permissions) {
         containerName: container,
         permissions: ContainerSASPermissions.parse(permissions),
         expiresOn: expiryDate,
-    }, sharedKeyCredential).toString();
+    }, sharedKeyCredential);
 
     return {
-        sasKey: sasKey,
-        url: connStringParts.url
+        sasKey: sasKey.toString(),
+        url: url
     };
 }
